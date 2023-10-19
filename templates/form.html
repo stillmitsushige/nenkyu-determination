@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+.result {
+  font-size: 2em;  /* 文字の大きさを3emに設定 */
+  font-weight: bold;  /* 文字を太くする */
+  animation: blink 1s infinite;
+}
+</style>
+</head>
+<body>
+<h1>あなたが有給と言うか年休と言うかを当てます</h1>
+<h2>あなたの仕事について教えてください</h2>
+
+<form action="/" method="post">
+  <input type="radio" id="large_company" name="job_type" value="large_company" {% if job_type == 'large_company' %}checked{% endif %}>
+  <label for="large_company">大企業 (従業員1,000人以上)</label><br>
+  <input type="radio" id="small_company" name="job_type" value="small_company" {% if job_type == 'small_company' %}checked{% endif %}>
+  <label for="small_company">中小企業</label><br>
+  <input type="radio" id="public_servant" name="job_type" value="public_servant" {% if job_type == 'public_servant' %}checked{% endif %}>
+  <label for="public_servant">公務員</label><br>
+  <input type="radio" id="self_employed" name="job_type" value="self_employed" {% if job_type == 'self_employed' %}checked{% endif %}>
+  <label for="self_employed">自営業</label><br>
+  <input type="radio" id="other" name="job_type" value="other" {% if job_type == 'other' %}checked{% endif %}>
+  <label for="other">その他</label><br>
+
+  <input type="submit" value="当ててもらう">
+</form>
+
+{% if leave_type %}
+<p class="result">あなたは「{{ leave_type }}」と言います。</p>
+{% endif %}
+
+</body>
+</html>
